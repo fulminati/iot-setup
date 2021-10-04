@@ -439,7 +439,7 @@ search.addEventListener("input", (event) => {
     fetch(resource, {
       ...options,
       mode: 'cors',
-     // signal: controller.signal
+      signal: controller.signal
     }).then((response) => {
         if (response.ok) {
           response.text().then(function (text) {
