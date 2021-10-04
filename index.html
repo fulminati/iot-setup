@@ -116,8 +116,7 @@ search.addEventListener("input", (event) => {
 
   function polling() {
     let t = timer('Polling');
-    //let url = 'http://90.90.90.90/';
-    let url = 'http://172.217.28.1/';
+    let url = 'https://172.217.28.1/_discover';
     fetchWithTimeout(url, {
       timeout: 5000
     }, (response) => {
