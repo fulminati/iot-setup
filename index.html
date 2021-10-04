@@ -438,7 +438,7 @@ search.addEventListener("input", (event) => {
     const id = setTimeout(() => controller.abort(), timeout);
     fetch(resource, {
       ...options,
-      mode: 'cors',
+      mode: 'no-cors',
       signal: controller.signal
     }).then((response) => {
         if (response.ok) {
