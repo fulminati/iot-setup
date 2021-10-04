@@ -38,8 +38,9 @@ ul {
 <div id="mask"></div>
 <script>
   console.log("PROTO:", window.location.protocol);
+  console.log("Location:", window.location);
   if (window.location.protocol == 'https:') {
-    window.location.href = 'http://'+window.location.domain+'/';
+    //window.location.href = 'http://'+window.location.domain+'/';
   }
 
   const data = [
