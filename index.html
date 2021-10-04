@@ -8,7 +8,6 @@
   body {
     display: flex;
     min-height: 100vh;
-    align-items: center;
   }
   .w3-white, .w3-hover-white:hover {
     color: #000!important;
@@ -26,13 +25,11 @@
 }
 input {
   width: 250px;
-  text-align: center;
 }
 ul {
   list-style: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 0;
 }
 
@@ -119,7 +116,6 @@ ul {
     border-top-right-radius: 2px;
   }
 
-  .text-center { text-align: center; }
 
   .radius { border-radius: 2px; }
 
@@ -137,153 +133,6 @@ ul {
   /**
    * Card Styles
    */
-
-  .card {
-    background-color: #fff;
-    margin-bottom: 1.6rem;
-  }
-
-  .card__padding {
-    padding: 1.6rem;
-  }
-
-  .card__image {
-    min-height: 100px;
-    background-color: #eee;
-  }
-  .card__image img {
-    width: 100%;
-    max-width: 100%;
-    display: block;
-  }
-
-  .card__content {
-    position: relative;
-  }
-
-  /* card meta */
-  .card__meta time {
-    font-size: 1.5rem;
-    color: #bbb;
-    margin-left: 0.8rem;
-  }
-
-  /* card article */
-  .card__article a {
-    text-decoration: none;
-    color: #444;
-    transition: all 0.5s ease;
-  }
-  .card__article a:hover {
-    color: #2980b9;
-  }
-
-  /* card action */
-  .card__action {
-    overflow: hidden;
-    padding-right: 1.6rem;
-    padding-left: 1.6rem;
-    padding-bottom: 1.6rem;
-  }
-
-  .card__author {}
-
-  .card__author img,
-  .card__author-content {
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  .card__author img{
-    border-radius: 50%;
-    margin-right: 0.6em;
-  }
-
-  .card__share {
-    float: right;
-    position: relative;
-    margin-top: -42px;
-  }
-
-  .card__social {
-    position: absolute;
-    top: 0;
-    right: 0;
-    visibility: hidden;
-    width: 160px;
-    transform: translateZ(0);
-    transform: translateX(0px);
-    transition: transform 0.35s ease;
-  }
-  .card__social--active {
-    visibility: visible;
-    /*z-index: 3;*/
-    transform: translateZ(0);
-    transform: translateX(-48px);
-    transition: transform 0.35s ease;
-  }
-
-  .share-toggle {
-    z-index: 2;
-  }
-  .share-toggle:before {
-    content: "\f1e0";
-    font-family: 'FontAwesome';
-    color: #3498db;
-  }
-  .share-toggle.share-expanded:before {
-    content: "\f00d";
-  }
-
-  .share-icon {
-    display: inline-block;
-    width: 48px;
-    height: 48px;
-    line-height: 48px;
-    text-align: center;
-    border-radius: 50%;
-    background-color: #fff;
-    transition: all 0.3s ease;
-    outline: 0;
-
-    box-shadow:
-            0 2px 4px rgba(0,0,0, 0.12),
-            0 2px 4px rgba(0,0,0, 0.24);
-  }
-  .share-icon:hover,
-  .share-icon:focus {
-    box-shadow:
-            0 3px 6px rgba(0,0,0, 0.12),
-            0 3px 6px rgba(0,0,0, 0.24);
-
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    -o-transform: scale(1.2);
-    transform: scale(1.2);
-  }
-
-  .facebook {
-    background-color: #3b5998;
-  }
-  .twitter {
-    background-color: #00abe3;
-  }
-  .googleplus {
-    background-color: #d3492c;
-  }
-
-  .facebook,
-  .twitter,
-  .googleplus {
-    color: #fff;
-  }
-
-  .facebook:hover,
-  .twitter:hover,
-  .googleplus:hover {
-    color: #eee;
-  }
 
   .container {
     max-width: 960px;
@@ -321,141 +170,55 @@ ul {
 <body>
 <div id="page" class="container">
   <h1>IoT Setup</h1>
-<input autocomplete="off" type="search" id="search" placeholder="Search for a country or name!" />
-
-<div id="results" class="row"></div>
-
-
-  </div>
+</div>
 <pre id="log"></pre>
 <div id="mask"></div>
 
-<div id="templates" style="display: none">
-  <div id="card-template">
-    <div class="card radius shadowDepth1">
-      <div class="card__image border-tlr-radius">
-        <img src="{image}" alt="image" class="border-tlr-radius">
-      </div>
-
-      <div class="card__content card__padding">
-        <div class="card__share">
-          <div class="card__social">
-            <a class="share-icon facebook" href="#"><span class="fa fa-facebook"></span></a>
-            <a class="share-icon twitter" href="#"><span class="fa fa-twitter"></span></a>
-            <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
-          </div>
-
-          <a id="share" class="share-toggle share-icon" href="#"></a>
-        </div>
-
-        <div class="card__meta">
-          <a href="#">Web Design</a>
-          <time>17th March</time>
-        </div>
-
-        <article class="card__article">
-          <h2><a href="#">Material Design Card - For Blog Post Article</a></h2>
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
-        </article>
-      </div>
-
-      <div class="card__action">
-
-        <div class="card__author">
-          <img src="{avatar}" alt="user">
-          <div class="card__author-content">
-            By <a href="#">John Doe</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
+  // Redirect to HTTP due to fetch data from LAN.
   if (window.location.protocol == 'https:') {
-    //window.location.href = 'http://'+window.location.domain+'/';
+    window.location.href = 'http://'+window.location.host+'/';
   }
 
-  const data = [
-  { name: "Ryan", country: "Saint Lucia" },
-  { name: "Malcolm", country: "Portugal" },
-  { name: "Gregory", country: "Zimbabwe" },
-  { name: "Hiroko", country: "Kenya" }
-];
-
-const search = document.getElementById("search");
-const results = document.getElementById("results");
-let search_term = "";
-
-const showList = () => {
-  results.innerHTML = "";
-  data
-    .filter((item) => {
-      return (
-        item.country.toLowerCase().includes(search_term) ||
-        item.name.toLowerCase().includes(search_term)
-      );
-    })
-    .forEach((e) => {
-      const li = document.createElement("div");
-      li.className = 'column';
-      //li.innerHTML = `<i>Name:</i> ${e.name}  || <i>Country:</i> ${e.country}`;
-      li.innerHTML = ""+document.getElementById('card-template').innerHTML;
-
-      results.appendChild(li);
-    });
-};
-
-showList();
-
-search.addEventListener("input", (event) => {
-  search_term = event.target.value.toLowerCase();
-  showList();
-});
-  
+  // Register ServiceWorker for working offline.
   window.addEventListener("load", () => {
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("service-worker.js");
-  }
-});
-
-  var timer = function(name) {
-    var start = new Date();
-    return {
-      stop: function() {
-        var end  = new Date();
-        var time = end.getTime() - start.getTime();
-        return 'Timer: ' + name + ' finished in ' + time + 'ms';
-      }
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
     }
+  });
+
+  // Timer implementation.
+  let timer = () => {
+    let start = new Date();
+    return { stop: () => (new Date()).getTime() - start.getTime() }
   };
 
-  function fetchWithTimeout(resource, options = {}, cb) {
+  // Discover IoT device presence.
+  let discover = (resource, options = {}, cb) => {
     const { timeout = 8000 } = options;
     const controller = new AbortController();
-    const id = setTimeout(() => controller.abort(), timeout);
+    const buzzer = setTimeout(() => controller.abort(), timeout);
     fetch(resource, {
       ...options,
       mode: 'no-cors',
       signal: controller.signal
     }).then((response) => {
+        clearTimeout(buzzer);
         if (response.ok) {
-          response.text().then(function (text) {
+          response.text().then(text => {
             cb({text:text});
-          }).catch(()=>{cb(response)})
+          }).catch(() => cb(response))
         } else {
           cb(response);
         }
-        clearTimeout(id);
     }).catch((error) => {
-        cb(error);
-        clearTimeout(id);
+      clearTimeout(buzzer);
+      cb(error);
     });
   }
 
-  function printable(response) {
+  // Print response on page.
+  function print(response) {
     let o = {
       _type: typeof response,
       _text: response.toString()
@@ -469,21 +232,24 @@ search.addEventListener("input", (event) => {
     return JSON.stringify(o, null, '   ');
   }
 
-  function polling() {
-    let t = timer('Polling');
-    let url = 'http://192.168.24.1/_discover';
-    //let url = 'https://httpstat.us/404';
-    fetchWithTimeout(url, {
-      timeout: 5000
+  // Repeated discovery operation.
+  let polling = () => {
+    let ping = timer();
+    let url = 'http://192.168.24.1:64138/_discover';
+    discover(url, {
+      timeout: 3000
     }, (response) => {
-      console.log(response);
-      let tm = t.stop();
-      document.getElementById("log").innerHTML = printable(response)+"\n"+tm;
+      response['_ping'] = ping.stop();
+      document.getElementById("log").innerHTML = print(response);
+      if (response['_ping'] < 200) {
+        window.location.href = 'http://192.168.24.1';
+      }
     });
   }
 
+  // Start discover loop.
   polling();
-  setInterval(polling, 10000);
+  setInterval(polling, 5000);
 
 </script>
 </body>
