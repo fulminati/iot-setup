@@ -37,6 +37,10 @@ ul {
 <pre id="log"></pre>
 <div id="mask"></div>
 <script>
+  if (window.location.protocol == 'https') {
+    window.location = 'http://'+window.location.domain+'/';
+  }
+
   const data = [
   { name: "Ryan", country: "Saint Lucia" },
   { name: "Malcolm", country: "Portugal" },
@@ -107,7 +111,13 @@ search.addEventListener("input", (event) => {
   }
 
   function printable(response) {
-    let o = {}
+    let o = {
+      _type: typeof response,
+      _text: response.toString()
+    };
+    if (o['_type'] == 'object') {
+      o['_keys'] = Object.keys(response)
+    }
     for (let i in response) {
       o[i] = response[i];
     }
@@ -116,7 +126,7 @@ search.addEventListener("input", (event) => {
 
   function polling() {
     let t = timer('Polling');
-    let url = 'https://172.217.28.1/_discover';
+    let url = 'http://172.217.28.1/_discover';
     fetchWithTimeout(url, {
       timeout: 5000
     }, (response) => {
