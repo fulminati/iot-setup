@@ -363,7 +363,7 @@ ul {
       <div class="card__action">
 
         <div class="card__author">
-          <img src="http://lorempixel.com/40/40/sports/" alt="user">
+          <img src="{avatar}" alt="user">
           <div class="card__author-content">
             By <a href="#">John Doe</a>
           </div>
@@ -374,8 +374,6 @@ ul {
 </div>
 
 <script>
-  console.log("PROTO:", window.location.protocol);
-  console.log("Location:", window.location);
   if (window.location.protocol == 'https:') {
     //window.location.href = 'http://'+window.location.domain+'/';
   }
@@ -405,7 +403,6 @@ const showList = () => {
       li.className = 'column';
       //li.innerHTML = `<i>Name:</i> ${e.name}  || <i>Country:</i> ${e.country}`;
       li.innerHTML = ""+document.getElementById('card-template').innerHTML;
-      console.log(li.innerHTML);
 
       results.appendChild(li);
     });
@@ -439,13 +436,18 @@ search.addEventListener("input", (event) => {
     const { timeout = 8000 } = options;
     const controller = new AbortController();
     const id = setTimeout(() => controller.abort(), timeout);
-    console.log(options)
     fetch(resource, {
       ...options,
-      mode: 'no-cors',
-      signal: controller.signal
+      mode: 'cors',
+     // signal: controller.signal
     }).then((response) => {
-        cb(response);
+        if (response.ok) {
+          response.text().then(function (text) {
+            cb({text:text});
+          }).catch(()=>{cb(response)})
+        } else {
+          cb(response);
+        }
         clearTimeout(id);
     }).catch((error) => {
         cb(error);
@@ -469,7 +471,8 @@ search.addEventListener("input", (event) => {
 
   function polling() {
     let t = timer('Polling');
-    let url = 'http://172.217.28.1/_discover';
+    //let url = 'http://172.217.28.1/_discover';
+    let url = 'https://httpstat.us/404';
     fetchWithTimeout(url, {
       timeout: 5000
     }, (response) => {
