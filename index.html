@@ -9,50 +9,51 @@
     display: flex;
     min-height: 100vh;
   }
+
   .w3-white, .w3-hover-white:hover {
-    color: #000!important;
-    background-color: #fff!important;
+    color: #000 !important;
+    background-color: #fff !important;
   }
+
   .w3-light-grey, .w3-hover-light-grey:hover, .w3-light-gray, .w3-hover-light-gray:hover {
-    color: #000!important;
-    background-color: #f1f1f1!important;
+    color: #000 !important;
+    background-color: #f1f1f1 !important;
   }
+
   html, body {
-    font-family: Verdana,sans-serif;
+    font-family: Verdana, sans-serif;
     font-size: 15px;
     line-height: 1.5;
-  flex-direction: column;
-}
-input {
-  width: 250px;
-}
-ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-}
+    flex-direction: column;
+  }
 
+  input {
+    width: 250px;
+  }
 
-  /* Float four columns side by side */
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
   .column {
     float: left;
     width: 25%;
     padding: 0 10px;
   }
 
-  /* Remove extra left and right margins, due to padding in columns */
-  .row {margin: 0 -5px;}
+  .row {
+    margin: 0 -5px;
+  }
 
-  /* Clear floats after the columns */
   .row:after {
     content: "";
     display: table;
     clear: both;
   }
 
-
-  /* Responsive columns - one column layout (vertical) on small screens */
   @media screen and (max-width: 600px) {
     .column {
       width: 100%;
@@ -60,11 +61,6 @@ ul {
       margin-bottom: 20px;
     }
   }
-
-
-  /*
-  *  Basic Reset
-  */
 
   *,
   *:after,
@@ -74,12 +70,10 @@ ul {
     box-sizing: border-box;
   }
 
-  /**
-   * Basics Styles
-   */
   html {
     font-size: 62.5%;
   }
+
   body {
     background-color: #F2EFEA;
     font-weight: 400;
@@ -92,6 +86,7 @@ ul {
     text-decoration: none;
     color: #3498db;
   }
+
   a:hover {
     color: #2980b9;
   }
@@ -108,31 +103,28 @@ ul {
     padding-right: 1em;
   }
 
-  /**
-   * Helpers
-   */
   .border-tlr-radius {
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
   }
 
-
-  .radius { border-radius: 2px; }
-
-  .padding-tb { padding-top: 1.6rem; padding-bottom: 1.6rem;}
-
-  .shadowDepth0 { box-shadow: 0 1px 3px rgba(0,0,0, 0.12); }
-
-  .shadowDepth1 {
-    box-shadow:
-            0 1px 3px rgba(0,0,0, 0.12),
-            0 1px 2px rgba(0,0,0, 0.24);
+  .radius {
+    border-radius: 2px;
   }
 
+  .padding-tb {
+    padding-top: 1.6rem;
+    padding-bottom: 1.6rem;
+  }
 
-  /**
-   * Card Styles
-   */
+  .shadowDepth0 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  }
+
+  .shadowDepth1 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+  }
 
   .container {
     max-width: 960px;
@@ -143,37 +135,38 @@ ul {
       max-width: 1140px;
     }
   }
-    @media (min-width: 992px) {
-      .container {
-        max-width: 960px;
-      }}
-      @media (min-width: 768px) {
-        .container {
-          max-width: 720px;
-        }
-      }
-        @media (min-width: 576px) {
-          .container {
-            max-width: 540px;
-          }
-        }
-          .container {
-            width: 100%;
-            padding-right: 15px;
-            padding-left: 15px;
-            margin-right: auto;
-            margin-left: auto;
-          }
 
+  @media (min-width: 992px) {
+    .container {
+      max-width: 960px;
+    }
+  }
 
+  @media (min-width: 768px) {
+    .container {
+      max-width: 720px;
+    }
+  }
+
+  @media (min-width: 576px) {
+    .container {
+      max-width: 540px;
+    }
+  }
+
+  .container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 </style>
 <body>
 <div id="page" class="container">
   <h1>IoT Setup</h1>
+  <pre id="log"></pre>
 </div>
-<pre id="log"></pre>
-<div id="mask"></div>
-
 <script>
   // Redirect to HTTP due to fetch data from LAN.
   if (window.location.protocol == 'https:') {
