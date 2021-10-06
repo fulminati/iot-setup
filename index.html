@@ -1,172 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
-<title><% appTitle %></title>
+<title>IoT Setup Page</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="shortcut icon"type="image/x-icon" href="data:image/x-icon;,">
 <style>
-  body {
-    display: flex;
-    min-height: 100vh;
-  }
-
-  .w3-white, .w3-hover-white:hover {
-    color: #000 !important;
-    background-color: #fff !important;
-  }
-
-  .w3-light-grey, .w3-hover-light-grey:hover, .w3-light-gray, .w3-hover-light-gray:hover {
-    color: #000 !important;
-    background-color: #f1f1f1 !important;
-  }
-
-  html, body {
-    font-family: Verdana, sans-serif;
-    font-size: 15px;
-    line-height: 1.5;
-    flex-direction: column;
-  }
-
-  input {
-    width: 250px;
-  }
-
-  ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-  }
-
-  .column {
-    float: left;
-    width: 25%;
-    padding: 0 10px;
-  }
-
-  .row {
-    margin: 0 -5px;
-  }
-
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  @media screen and (max-width: 600px) {
-    .column {
-      width: 100%;
-      display: block;
-      margin-bottom: 20px;
-    }
-  }
-
-  *,
-  *:after,
-  *:before {
-    margin: 0;
-    padding: 0;
+  * {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
 
-  html {
-    font-size: 62.5%;
-  }
-
   body {
-    background-color: #F2EFEA;
-    font-weight: 400;
-    font-size: 1.6em;
-    line-height: 1.6;
-    color: #666;
+    font-family: monospace;
+    padding: 0;
+    margin: 0;
   }
 
-  a {
-    text-decoration: none;
-    color: #3498db;
+  #notfound {
+    position: relative;
+    height: 100vh;
   }
 
-  a:hover {
-    color: #2980b9;
+  #notfound .notfound {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
 
-  h2 {
-    line-height: 1.2;
-    margin-bottom: 1.6rem;
+  #notfound .notfound-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
   }
 
-  .wrapper {
-    max-width: 400px;
-    margin: 50px auto;
-    padding-left: 1em;
-    padding-right: 1em;
+  #notfound .notfound-bg>div {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: #eee;
   }
 
-  .border-tlr-radius {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
+  #notfound .notfound-bg>div:nth-child(1) {
+    left: 20%;
   }
 
-  .radius {
-    border-radius: 2px;
+  #notfound .notfound-bg>div:nth-child(2) {
+    left: 40%
   }
 
-  .padding-tb {
-    padding-top: 1.6rem;
-    padding-bottom: 1.6rem;
+  #notfound .notfound-bg>div:nth-child(3) {
+    left: 60%
   }
 
-  .shadowDepth0 {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  #notfound .notfound-bg>div:nth-child(4) {
+    left: 80%
   }
 
-  .shadowDepth1 {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
-    0 1px 2px rgba(0, 0, 0, 0.24);
+  #notfound .notfound-bg>div:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: -0.5px;
+    -webkit-transform: translateY(-160px);
+    -ms-transform: translateY(-160px);
+    transform: translateY(-160px);
+    height: 160px;
+    width: 2px;
+    background-color: #00ffc0;
   }
 
-  .container {
-    max-width: 960px;
-  }
-
-  @media (min-width: 1200px) {
-    .container {
-      max-width: 1140px;
+  @-webkit-keyframes drop {
+    90% {
+      height: 20px;
+    }
+    100% {
+      height: 160px;
+      -webkit-transform: translateY(calc(100vh + 160px));
+      transform: translateY(calc(100vh + 160px));
     }
   }
 
-  @media (min-width: 992px) {
-    .container {
-      max-width: 960px;
+  @keyframes drop {
+    90% {
+      height: 20px;
+    }
+    100% {
+      height: 160px;
+      -webkit-transform: translateY(calc(100vh + 160px));
+      transform: translateY(calc(100vh + 160px));
     }
   }
 
-  @media (min-width: 768px) {
-    .container {
-      max-width: 720px;
-    }
+  #notfound .notfound-bg>div:nth-child(1):after {
+    -webkit-animation: drop 3s infinite linear;
+    animation: drop 3s infinite linear;
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
   }
 
-  @media (min-width: 576px) {
-    .container {
-      max-width: 540px;
-    }
+  #notfound .notfound-bg>div:nth-child(2):after {
+    -webkit-animation: drop 2s infinite linear;
+    animation: drop 2s infinite linear;
+    -webkit-animation-delay: 0.7s;
+    animation-delay: 0.7s;
   }
 
-  .container {
+  #notfound .notfound-bg>div:nth-child(3):after {
+    -webkit-animation: drop 3s infinite linear;
+    animation: drop 3s infinite linear;
+    -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s;
+  }
+
+  #notfound .notfound-bg>div:nth-child(4):after {
+    -webkit-animation: drop 2s infinite linear;
+    animation: drop 2s infinite linear;
+    -webkit-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+  }
+
+  .notfound {
+    max-width: 520px;
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    text-align: center;
+  }
+
+  .notfound .notfound-404 {
+    height: 210px;
+    line-height: 210px;
+  }
+
+  .notfound .notfound-404 h1 {
+    font-size: 188px;
+    font-weight: 700;
+    margin: 0px;
+    text-shadow: 4px 4px 0px #0892d0;
+  }
+
+  .notfound h2 {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+  }
+
+  .notfound p {
+    color: #000;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 25px;
+  }
+
+  .notfound a {
+    padding: 10px 30px;
+    display: inline-block;
+    color: #000;
+    font-weight: 400;
+    text-transform: uppercase;
+    -webkit-box-shadow: 0px 0px 0px 2px #000, 2px 2px 0px 2px #0892d0;
+    box-shadow: 0px 0px 0px 2px #000, 2px 2px 0px 2px #0892d0;
+    text-decoration: none;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+  }
+
+  .notfound a:hover {
+    background-color: #0892d0;
+    -webkit-box-shadow: 0px 0px 0px 0px #000, 0px 0px 0px 2px #0892d0;
+    box-shadow: 0px 0px 0px 0px #000, 0px 0px 0px 2px #0892d0;
+  }
+
+  .notfound-social {
+    margin-top: 35px;
+  }
+
+  .notfound-social>a {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0px;
+    margin: 0px 5px;
+  }
+
+  .notfound-social>a:hover {
+    background-color: #0892d0;
+    -webkit-box-shadow: 0px 0px 0px 0px #000, 0px 0px 0px 2px #0892d0;
+    box-shadow: 0px 0px 0px 0px #000, 0px 0px 0px 2px #0892d0;
+  }
+
+  @media only screen and (max-width: 480px) {
+    .notfound .notfound-404 {
+      height: 122px;
+      line-height: 122px;
+    }
+    .notfound .notfound-404 h1 {
+      font-size: 122px;
+    }
+    .notfound h2 {
+      font-size: 26px;
+    }
   }
 </style>
 <body>
-<div id="page" class="container">
-  <h1>IoT Setup</h1>
-  <pre id="log"></pre>
+<div id="notfound">
+  <div class="notfound">
+    <div class="notfound-404">
+      <h1>IoT</h1>
+    </div>
+    <h2>Setup Page</h2>
+    <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
+    <a href="#">Homepage</a>
+    <div class="notfound-social">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-pinterest"></i></a>
+      <a href="#"><i class="fa fa-google-plus"></i></a>
+    </div>
+  </div>
 </div>
+<pre id="log" style="display: none">
+
+</pre>
 <script>
   // Redirect to HTTP due to fetch data from LAN.
   if (window.location.protocol == 'https:') {
@@ -231,10 +293,10 @@
     let url = 'http://192.168.24.1:64138/_discover';
     discover(url, {
       timeout: 3000
-    }, (response) => {
-      response['_ping'] = ping.stop();
-      document.getElementById("log").innerHTML = print(response);
-      if (response['_ping'] < 200) {
+    }, log => {
+      log['_ping'] = ping.stop();
+      document.getElementById("log").innerHTML = print(log);
+      if (log['_ping'] < 200) {
         window.location.href = 'http://192.168.24.1/';
       }
     });
